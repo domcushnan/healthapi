@@ -8,7 +8,7 @@
 | Region | UK |
 | Category | `uk-stats` |
 | Base URL | `https://ckan.publishing.service.gov.uk/api/3` |
-| Docs | https://docs.ckan.org/en/latest/api/index.html |
+| Docs | https://ckan.publishing.service.gov.uk/api/3/action/help_show?name=package_search (CKAN's `help_show` introspection on the data.gov.uk instance — returns live parameter docs for any action). The wider [CKAN software docs](https://docs.ckan.org/en/latest/api/index.html) are also useful for newcomers but are not operated by UK Government. |
 | Auth | None — public, no key required |
 | Licence | Datasets vary; most are Open Government Licence v3.0 (https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/). Check each package's `license_id` field. |
 | Rate limits | None documented |

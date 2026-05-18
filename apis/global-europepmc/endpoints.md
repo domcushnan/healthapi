@@ -28,24 +28,23 @@ Returns: object with `hitCount`, `nextCursorMark` and `resultList.result[]` of r
 
 ---
 
-## `GET /article/{source}/{id}/fullTextXML`
+## `GET /{pmcid}/fullTextXML`
 
-Fetch full-text JATS XML for open-access articles.
+Fetch full-text JATS XML for an open-access article hosted in PMC.
 
 **Parameters**
 
 | Name | In | Required | Notes |
 |------|----|----------|-------|
-| `source` | path | yes | `PMC`, `MED` (PubMed), `PPR` (preprint), etc. |
-| `id` | path | yes | Identifier in the chosen source (e.g. `PMC13063568`). |
+| `pmcid` | path | yes | PMC identifier including the `PMC` prefix (e.g. `PMC13063568`). The endpoint only serves PMC-hosted full text; articles not flagged `isOpenAccess=Y` and `inEPMC=Y` will return HTTP 404. |
 
 **Example**
 
 ```bash
-curl 'https://www.ebi.ac.uk/europepmc/webservices/rest/article/PMC/PMC13063568/fullTextXML'
+curl 'https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13063568/fullTextXML'
 ```
 
-Returns: JATS XML document. Only available for articles flagged `isOpenAccess=Y` and `inEPMC=Y`.
+Returns: JATS XML document. Check `isOpenAccess` and `inEPMC` in the search response before calling this endpoint — non-eligible articles return 404 with an empty body.
 
 ---
 

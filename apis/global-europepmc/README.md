@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| Provider | Europe PMC consortium (EMBL-EBI, Wellcome Trust, JISC, et al.) |
+| Provider | EMBL-EBI, on behalf of the Europe PMC Funders' Group, in collaboration with the U.S. National Library of Medicine |
 | Region | EU |
 | Category | `clinical-evidence` |
 | Base URL | `https://www.ebi.ac.uk/europepmc/webservices/rest` |

@@ -6,7 +6,7 @@
     "region": "UK",
     "category": "uk-stats",
     "base_url": "https://ckan.publishing.service.gov.uk/api/3",
-    "docs_url": "https://docs.ckan.org/en/latest/api/index.html",
+    "docs_url": "https://ckan.publishing.service.gov.uk/api/3/action/help_show?name=package_search",
     "licence": "Datasets vary; most are Open Government Licence v3.0 (https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/). Check each package's license_id field.",
     "rate_limits": "none documented",
     "auth": "none",
@@ -93,7 +93,7 @@
         }
       }
     ],
-    "gotchas": "This is the BETA API replacing the decommissioned legacy https://api.ons.gov.uk/timeseries/ (sunset 25 Nov 2024). Endpoints under /timeseries/ now return 404. Some legacy /datasets/{id}/timeseries probes still 404; use the editions/versions/observations path instead.",
+    "gotchas": "This is the BETA API replacing the decommissioned legacy https://api.ons.gov.uk/timeseries/ (retired 14 October 2024 per Sunset response header). Endpoints under /timeseries/ now return 404. Some legacy /datasets/{id}/timeseries probes still 404; use the editions/versions/observations path instead.",
     "cluster": 1
   },
   {
@@ -480,7 +480,7 @@
   {
     "slug": "global-europepmc",
     "name": "Europe PMC REST API",
-    "provider": "Europe PMC consortium (EMBL-EBI, Wellcome Trust, JISC, etc.)",
+    "provider": "EMBL-EBI, on behalf of the Europe PMC Funders' Group, in collaboration with the U.S. National Library of Medicine",
     "region": "EU",
     "category": "clinical-evidence",
     "base_url": "https://www.ebi.ac.uk/europepmc/webservices/rest",

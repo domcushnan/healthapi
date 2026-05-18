@@ -3,17 +3,17 @@
 # Run: bash examples/curl.sh
 set -euo pipefail
 
-echo "=== Example 1: drug name -> concept groups (Lipitor) ==="
+echo "=== Example 1: drug name -> RxCUI (Lipitor) ==="
 curl -sS --max-time 20 \
   -H 'Accept: application/json' \
-  'https://rxnav.nlm.nih.gov/REST/drugs.json?name=lipitor' \
+  'https://rxnav.nlm.nih.gov/REST/rxcui.json?name=lipitor' \
   | head -c 2000
 echo
 
-echo "=== Example 2: brand -> ingredient (RxCUI 207106 -> IN) ==="
+echo "=== Example 2: brand -> ingredient (RxCUI 153165 -> IN) ==="
 curl -sS --max-time 20 \
   -H 'Accept: application/json' \
-  'https://rxnav.nlm.nih.gov/REST/rxcui/207106/related.json?tty=IN' \
+  'https://rxnav.nlm.nih.gov/REST/rxcui/153165/related.json?tty=IN' \
   | head -c 2000
 echo
 

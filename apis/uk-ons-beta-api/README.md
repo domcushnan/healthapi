@@ -24,7 +24,7 @@ It is most useful when you want stable identifiers and a JSON surface to drive d
 
 ## Gotchas
 
-- The legacy host `https://api.ons.gov.uk/timeseries/...` was fully retired on 25 November 2024 and now returns HTTP 404 with `Sunset` and `Deprecation` response headers. Always call `api.beta.ons.gov.uk/v1` instead.
+- The legacy host `https://api.ons.gov.uk/timeseries/...` was retired on 14 October 2024 (per the `Sunset` response header on the legacy host) and now returns HTTP 404. Always call `api.beta.ons.gov.uk/v1` instead.
 - Some legacy probes against `/datasets/{id}/timeseries` paths still 404 on the beta API. To pull actual numbers, walk `/datasets/{id}` → `/editions` → `/versions/{n}` and then either the version-level `downloads` (CSV/XLSX) or the `/observations` endpoint with dimension query params.
 - Responses are verbose. Trim or project specific fields when caching to disk — single dataset records routinely cross 2 KB once the `links` and `methodologies` arrays are populated.
 
