@@ -1,0 +1,32 @@
+[
+    {
+        "state": "Alabama",
+        "indicator": "Count of COVID-19 deaths",
+        "non_hispanic_white": "15206",
+        "hispanic_latino_total": "388"
+    },
+    {
+        "state": "Alaska",
+        "indicator": "Count of COVID-19 deaths",
+        "non_hispanic_white": "805",
+        "hispanic_latino_total": "50"
+    },
+    {
+        "state": "Arizona",
+        "indicator": "Count of COVID-19 deaths",
+        "non_hispanic_white": "17500",
+        "hispanic_latino_total": "8225"
+    },
+    {
+        "state": "Arkansas",
+        "indicator": "Count of COVID-19 deaths",
+        "non_hispanic_white": "10238",
+        "hispanic_latino_total": "418"
+    },
+    {
+        "state": "California",
+        "indicator": "Count of COVID-19 deaths",
+        "non_hispanic_white": "41470",
+        "hispanic_latino_total": "45148"
+    }
+]

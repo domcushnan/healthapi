@@ -1,0 +1,50 @@
+{
+    "meta": {
+        "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+        "terms": "https://open.fda.gov/terms/",
+        "license": "https://open.fda.gov/license/",
+        "last_updated": "2026-04-28"
+    },
+    "results": [
+        {
+            "term": "DRUG INEFFECTIVE",
+            "count": 16908
+        },
+        {
+            "term": "PAIN",
+            "count": 15922
+        },
+        {
+            "term": "FATIGUE",
+            "count": 15074
+        },
+        {
+            "term": "NAUSEA",
+            "count": 14240
+        },
+        {
+            "term": "HEADACHE",
+            "count": 12776
+        },
+        {
+            "term": "ARTHRALGIA",
+            "count": 11199
+        },
+        {
+            "term": "DYSPNOEA",
+            "count": 11029
+        },
+        {
+            "term": "VOMITING",
+            "count": 10537
+        },
+        {
+            "term": "DIARRHOEA",
+            "count": 10180
+        },
+        {
+            "term": "RASH",
+            "count": 9361
+        }
+    ]
+}

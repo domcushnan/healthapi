@@ -1,0 +1,611 @@
+[
+  {
+    "slug": "uk-data-gov-uk-ckan",
+    "name": "data.gov.uk CKAN API (health subset)",
+    "provider": "UK Cabinet Office / Central Digital and Data Office",
+    "region": "UK",
+    "category": "uk-stats",
+    "base_url": "https://ckan.publishing.service.gov.uk/api/3",
+    "docs_url": "https://docs.ckan.org/en/latest/api/index.html",
+    "licence": "Datasets vary; most are Open Government Licence v3.0 (https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/). Check each package's license_id field.",
+    "rate_limits": "none documented",
+    "auth": "none",
+    "verified_at": "2026-05-18",
+    "verification_evidence": {
+      "endpoint_tested": "https://ckan.publishing.service.gov.uk/api/3/action/package_search?q=health&rows=1",
+      "status": 200,
+      "content_type": "application/json;charset=utf-8",
+      "response_excerpt": "{\"help\": \"https://ckan.publishing.service.gov.uk/api/3/action/help_show?name=package_search\", \"success\": true, \"result\": {\"count\": 5585, \"facets\": {}, \"results\": [{\"creator_user_id\": \"60e687bf-a6d8-43e2-a50e-efab84b27952\", \"id\": \"d44b4f65-563a-4e3c-9a01-f51b4a4dbdd2\", \"isopen\": true, \"license_id\": \"uk-ogl\", \"license_title\": \"UK Open Government Licence (OGL)\", \"metadata_modified\": \"2018-07-28T04:21:49.971857\", \"name\": \"health\"..."
+    },
+    "key_endpoints": [
+      {
+        "path": "/action/package_search",
+        "method": "GET",
+        "purpose": "Full-text search across UK government datasets; filter to health with q=health or fq=topic:health.",
+        "example_params": {
+          "q": "health",
+          "rows": 5
+        }
+      },
+      {
+        "path": "/action/package_show",
+        "method": "GET",
+        "purpose": "Fetch a single dataset including its resources (CSV/JSON file URLs).",
+        "example_params": {
+          "id": "health"
+        }
+      },
+      {
+        "path": "/action/organization_show",
+        "method": "GET",
+        "purpose": "List datasets published by an organisation (e.g. NHS Digital).",
+        "example_params": {
+          "id": "nhs-digital"
+        }
+      }
+    ],
+    "gotchas": "Hitting https://data.gov.uk/api/3/... returns a 301 to ckan.publishing.service.gov.uk — point readers at the resolved host. Many resources link out to opendatani.gov.uk or other portals; CKAN gives you metadata + a URL, not always the bytes.",
+    "cluster": 1
+  },
+  {
+    "slug": "uk-ons-beta-api",
+    "name": "Office for National Statistics Beta API",
+    "provider": "Office for National Statistics (ONS)",
+    "region": "UK",
+    "category": "uk-stats",
+    "base_url": "https://api.beta.ons.gov.uk/v1",
+    "docs_url": "https://developer.ons.gov.uk/",
+    "licence": "Open Government Licence v3.0 (https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)",
+    "rate_limits": "none documented; Cloudflare in front",
+    "auth": "none",
+    "verified_at": "2026-05-18",
+    "verification_evidence": {
+      "endpoint_tested": "https://api.beta.ons.gov.uk/v1/datasets",
+      "status": 200,
+      "content_type": "application/json",
+      "response_excerpt": "{\"items\":[{\"description\":\"Provisional counts of the number of deaths registered in England and Wales, by region...\",\"id\":\"weekly-deaths-region\",\"last_updated\":\"2026-05-14T09:22:38.44Z\",\"national_statistic\":true,\"release_frequency\":\"Weekly\",\"state\":\"published\",\"title\":\"Deaths registered weekly in England and Wales by region\"}, ... ,{\"id\":\"suicides-in-the-uk\",\"title\":\"Suicide registrations in England and Wales by local authority\"}], \"count\":20,\"total_count\":337}"
+    },
+    "key_endpoints": [
+      {
+        "path": "/datasets",
+        "method": "GET",
+        "purpose": "List all ONS datasets; filter result client-side or paginate with limit/offset.",
+        "example_params": {
+          "limit": 20,
+          "offset": 0
+        }
+      },
+      {
+        "path": "/datasets/weekly-deaths-region",
+        "method": "GET",
+        "purpose": "Metadata for the weekly deaths dataset (England and Wales by region).",
+        "example_params": {}
+      },
+      {
+        "path": "/datasets/{id}/editions/{edition}/versions/{version}/observations",
+        "method": "GET",
+        "purpose": "Retrieve actual observations for a given dataset version with dimension query params.",
+        "example_params": {
+          "time": "2025",
+          "geography": "E92000001",
+          "week": "week-52",
+          "causeofdeath": "all-causes"
+        }
+      }
+    ],
+    "gotchas": "This is the BETA API replacing the decommissioned legacy https://api.ons.gov.uk/timeseries/ (sunset 25 Nov 2024). Endpoints under /timeseries/ now return 404. Some legacy /datasets/{id}/timeseries probes still 404; use the editions/versions/observations path instead.",
+    "cluster": 1
+  },
+  {
+    "slug": "global-who-gho-odata",
+    "name": "WHO Global Health Observatory (GHO) OData API",
+    "provider": "World Health Organization",
+    "region": "Global",
+    "category": "global-health",
+    "base_url": "https://ghoapi.azureedge.net/api",
+    "docs_url": "https://www.who.int/data/gho/info/gho-odata-api",
+    "licence": "WHO data are generally available under CC BY-NC-SA 3.0 IGO (https://www.who.int/about/policies/publishing/copyright). Verify per-indicator.",
+    "rate_limits": "none documented",
+    "auth": "none",
+    "verified_at": "2026-05-18",
+    "verification_evidence": {
+      "endpoint_tested": "https://ghoapi.azureedge.net/api/Indicator",
+      "status": 200,
+      "content_type": "application/json; odata.metadata=minimal; odata.streaming=true; charset=utf-8",
+      "response_excerpt": "{\"@odata.context\":\"https://ghoapi.azureedge.net/api/$metadata#Indicator\",\"value\":[{\"IndicatorCode\":\"EMFLIMITPOWERDENSITY900\",\"IndicatorName\":\"Power density limit at 900 MHz (W/m^2)\",\"Language\":\"EN\"},{\"IndicatorCode\":\"FINPROTECTION_CATA_TOT_25_LEVEL_SH\",\"IndicatorName\":\"Population with household spending on health greater than 25% of total household budget (SDG 3.8.2)\"},{\"IndicatorCode\":\"HIV_0000000009\",\"IndicatorName\":\"Reported number of people receiving antiretroviral therapy\"}]}"
+    },
+    "key_endpoints": [
+      {
+        "path": "/Indicator",
+        "method": "GET",
+        "purpose": "List all GHO indicators with codes and names; large response — paginate via OData $top/$skip.",
+        "example_params": {
+          "$top": 50
+        }
+      },
+      {
+        "path": "/{IndicatorCode}",
+        "method": "GET",
+        "purpose": "Fetch the observations for a specific indicator (e.g. WHOSIS_000001 for life expectancy).",
+        "example_params": {}
+      },
+      {
+        "path": "/DIMENSION/COUNTRY/DimensionValues",
+        "method": "GET",
+        "purpose": "List country dimension values for filtering observations.",
+        "example_params": {}
+      }
+    ],
+    "gotchas": "Hosted on Azure Edge — quoting of querystring filters can be fussy. Use OData syntax like $filter=SpatialDim eq 'GBR'. The /Indicator list is large; cache locally.",
+    "cluster": 3
+  },
+  {
+    "slug": "global-clinicaltrials-gov-v2",
+    "name": "ClinicalTrials.gov API v2",
+    "provider": "U.S. National Library of Medicine",
+    "region": "Global",
+    "category": "clinical-evidence",
+    "base_url": "https://clinicaltrials.gov/api/v2",
+    "docs_url": "https://clinicaltrials.gov/data-api/api",
+    "licence": "Public domain (U.S. government work). Terms of use: https://clinicaltrials.gov/about-site/terms-conditions",
+    "rate_limits": "none documented; be considerate",
+    "auth": "none",
+    "verified_at": "2026-05-18",
+    "verification_evidence": {
+      "endpoint_tested": "https://clinicaltrials.gov/api/v2/studies?query.term=asthma&pageSize=1",
+      "status": 200,
+      "content_type": "application/json",
+      "response_excerpt": "{\"studies\":[{\"protocolSection\":{\"identificationModule\":{\"nctId\":\"NCT00953147\",\"briefTitle\":\"A 6 Month Safety and Efficacy Study of Once Daily Ciclesonide Hydrofluoroalkane (HFA) in the Treatment of Perennial Allergic Rhinitis (PAR) in Subjects 12 Years and Older\"},\"statusModule\":{\"overallStatus\":\"COMPLETED\"}}}]}"
+    },
+    "key_endpoints": [
+      {
+        "path": "/studies",
+        "method": "GET",
+        "purpose": "Search studies by free-text term, condition, intervention, location, etc. Returns paginated study records.",
+        "example_params": {
+          "query.term": "asthma",
+          "pageSize": 10
+        }
+      },
+      {
+        "path": "/studies/{nctId}",
+        "method": "GET",
+        "purpose": "Fetch a single study by NCT ID with full protocol, results and metadata.",
+        "example_params": {}
+      },
+      {
+        "path": "/stats/size",
+        "method": "GET",
+        "purpose": "Aggregate counts and study-size statistics across the database.",
+        "example_params": {}
+      }
+    ],
+    "gotchas": "Old hosts api.clinicaltrials.gov and the v1 paths return DNS or 404 errors — always use https://clinicaltrials.gov/api/v2/. Use nextPageToken for paging, not skip/offset.",
+    "cluster": 3
+  },
+  {
+    "slug": "global-openfda",
+    "name": "openFDA (drug events, drug labels, device events, food enforcement)",
+    "provider": "U.S. Food and Drug Administration",
+    "region": "US",
+    "category": "drug-safety",
+    "base_url": "https://api.fda.gov",
+    "docs_url": "https://open.fda.gov/apis/",
+    "licence": "U.S. public domain (https://open.fda.gov/license/). Disclaimer: data unvalidated, not for clinical decisions.",
+    "rate_limits": "1,000 requests per IP per day without a key; 120,000 per day with a free key. Burst limit 240 per minute.",
+    "auth": "none",
+    "verified_at": "2026-05-18",
+    "verification_evidence": {
+      "endpoint_tested": "https://api.fda.gov/drug/event.json?limit=1",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "response_excerpt": "{\"meta\":{\"disclaimer\":\"Do not rely on openFDA to make decisions regarding medical care...\",\"license\":\"https://open.fda.gov/license/\",\"last_updated\":\"2026-04-28\",\"results\":{\"skip\":0,\"limit\":1,\"total\":20328575}},\"results\":[{\"safetyreportid\":\"5801206-7\",\"transmissiondateformat\":...}]}"
+    },
+    "key_endpoints": [
+      {
+        "path": "/drug/event.json",
+        "method": "GET",
+        "purpose": "FDA Adverse Event Reporting System (FAERS) reports for drugs.",
+        "example_params": {
+          "search": "patient.drug.medicinalproduct:\"ibuprofen\"",
+          "limit": 5
+        }
+      },
+      {
+        "path": "/drug/label.json",
+        "method": "GET",
+        "purpose": "Structured Product Labeling (SPL) for drugs — indications, dosage, warnings.",
+        "example_params": {
+          "search": "openfda.brand_name:\"ADVIL\"",
+          "limit": 1
+        }
+      },
+      {
+        "path": "/device/event.json",
+        "method": "GET",
+        "purpose": "Medical device adverse event reports (MAUDE).",
+        "example_params": {
+          "limit": 1
+        }
+      },
+      {
+        "path": "/food/enforcement.json",
+        "method": "GET",
+        "purpose": "Food recall enforcement reports.",
+        "example_params": {
+          "limit": 1
+        }
+      }
+    ],
+    "gotchas": "Anonymous limit is per IP per day (1,000) — easy to hit when developing. The free key is OPTIONAL, not required. Use search= with Lucene syntax (field:value). Date ranges use [20200101 TO 20201231].",
+    "cluster": 2
+  },
+  {
+    "slug": "global-ncbi-eutils",
+    "name": "NCBI E-utilities (PubMed, PMC, MeSH, etc.)",
+    "provider": "U.S. National Library of Medicine / NCBI",
+    "region": "US",
+    "category": "clinical-evidence",
+    "base_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils",
+    "docs_url": "https://www.ncbi.nlm.nih.gov/books/NBK25501/",
+    "licence": "U.S. public domain for NCBI-produced content. Some embedded content (e.g. third-party abstracts) is copyrighted; respect publisher rights.",
+    "rate_limits": "3 requests/sec per IP without a key (10/sec with a free key). Hard limit confirmed via X-RateLimit headers.",
+    "auth": "none",
+    "verified_at": "2026-05-18",
+    "verification_evidence": {
+      "endpoint_tested": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=asthma&retmax=2&retmode=json",
+      "status": 200,
+      "content_type": "application/json; charset=UTF-8",
+      "response_excerpt": "{\"header\":{\"type\":\"esearch\",\"version\":\"0.3\"},\"esearchresult\":{\"count\":\"242218\",\"retmax\":\"2\",\"retstart\":\"0\",\"idlist\":[\"42149595\",\"42149274\"],\"translationset\":[{\"from\":\"asthma\",\"to\":\"\\\"asthma\\\"[MeSH Terms] OR \\\"asthma\\\"[All Fields] OR \\\"asthmas\\\"[All Fields]\"}]}}"
+    },
+    "key_endpoints": [
+      {
+        "path": "/esearch.fcgi",
+        "method": "GET",
+        "purpose": "Search any NCBI database (pubmed, pmc, mesh, gene, etc.) returning UIDs.",
+        "example_params": {
+          "db": "pubmed",
+          "term": "asthma",
+          "retmode": "json"
+        }
+      },
+      {
+        "path": "/esummary.fcgi",
+        "method": "GET",
+        "purpose": "Fetch document summaries for a list of UIDs.",
+        "example_params": {
+          "db": "pubmed",
+          "id": "42149595",
+          "retmode": "json"
+        }
+      },
+      {
+        "path": "/efetch.fcgi",
+        "method": "GET",
+        "purpose": "Fetch full records (XML for PubMed, etc.).",
+        "example_params": {
+          "db": "pubmed",
+          "id": "42149595",
+          "rettype": "abstract",
+          "retmode": "text"
+        }
+      }
+    ],
+    "gotchas": "Anonymous rate limit is strictly 3 req/s. Always send tool= and email= parameters as identification (recommended by NCBI). retmode=json works for most but efetch falls back to XML for some dbs.",
+    "cluster": 3
+  },
+  {
+    "slug": "global-rxnav-rxnorm",
+    "name": "RxNav (RxNorm) API",
+    "provider": "U.S. National Library of Medicine",
+    "region": "US",
+    "category": "drug-safety",
+    "base_url": "https://rxnav.nlm.nih.gov/REST",
+    "docs_url": "https://lhncbc.nlm.nih.gov/RxNav/APIs/RxNormAPIs.html",
+    "licence": "RxNorm is in the U.S. public domain (NLM open-access).",
+    "rate_limits": "20 requests/sec per IP (documented).",
+    "auth": "none",
+    "verified_at": "2026-05-18",
+    "verification_evidence": {
+      "endpoint_tested": "https://rxnav.nlm.nih.gov/REST/drugs.json?name=lipitor",
+      "status": 200,
+      "content_type": "application/json;charset=utf-8",
+      "response_excerpt": "{\"drugGroup\":{\"conceptGroup\":[{\"tty\":\"BPCK\"},{\"tty\":\"SBD\",\"conceptProperties\":[{\"rxcui\":\"262095\",\"name\":\"atorvastatin 80 MG Oral Tablet [Lipitor]\",\"synonym\":\"Lipitor 80 MG Oral Tablet\",\"tty\":\"SBD\"},{\"rxcui\":\"617314\",\"name\":\"atorvastatin 10 MG Oral Tablet [Lipitor]\"}]}]}}"
+    },
+    "key_endpoints": [
+      {
+        "path": "/drugs.json",
+        "method": "GET",
+        "purpose": "Look up RxNorm concepts for a drug name (returns brand, generic, ingredient variants).",
+        "example_params": {
+          "name": "lipitor"
+        }
+      },
+      {
+        "path": "/rxcui/{rxcui}/properties.json",
+        "method": "GET",
+        "purpose": "Properties of an RxNorm concept by RxCUI.",
+        "example_params": {}
+      },
+      {
+        "path": "/approximateTerm.json",
+        "method": "GET",
+        "purpose": "Approximate-match search for an RxNorm term (handles typos, partial names).",
+        "example_params": {
+          "term": "lipitor",
+          "maxEntries": 5
+        }
+      },
+      {
+        "path": "/ndcstatus.json",
+        "method": "GET",
+        "purpose": "Status of an NDC (National Drug Code) and its mapping to RxNorm concepts.",
+        "example_params": {
+          "ndc": "00071015523"
+        }
+      }
+    ],
+    "gotchas": "RxNav also exposes RxClass, NDF-RT, RxTerms — same host. The Drug Interaction API (/interaction/interaction.json) has been removed entirely and now returns 404 — do not rely on it.",
+    "cluster": 2
+  },
+  {
+    "slug": "global-nlm-clinical-tables",
+    "name": "NLM Clinical Tables Search Service (ICD-10-CM, LOINC, RxTerms)",
+    "provider": "U.S. National Library of Medicine",
+    "region": "US",
+    "category": "ontology",
+    "base_url": "https://clinicaltables.nlm.nih.gov/api",
+    "docs_url": "https://clinicaltables.nlm.nih.gov/",
+    "licence": "U.S. public domain (NLM). Underlying code systems (ICD-10-CM, LOINC) carry their own terms; ICD-10-CM is public, LOINC is free with a use agreement at the source.",
+    "rate_limits": "none documented; long-cache headers indicate caching is encouraged",
+    "auth": "none",
+    "verified_at": "2026-05-18",
+    "verification_evidence": {
+      "endpoint_tested": "https://clinicaltables.nlm.nih.gov/api/icd10cm/v3/search?sf=code,name&terms=asthma",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "response_excerpt": "[19,[\"J45.998\",\"J82.83\",\"J45.909\",\"J45.991\",\"J45.20\",\"J45.30\",\"J45.40\"],null,[[\"J45.998\",\"Other asthma\"],[\"J82.83\",\"Eosinophilic asthma\"],[\"J45.909\",\"Unspecified asthma, uncomplicated\"],[\"J45.991\",\"Cough variant asthma\"],[\"J45.20\",\"Mild intermittent asthma, uncomplicated\"]]]"
+    },
+    "key_endpoints": [
+      {
+        "path": "/icd10cm/v3/search",
+        "method": "GET",
+        "purpose": "Type-ahead search for ICD-10-CM diagnosis codes.",
+        "example_params": {
+          "terms": "asthma",
+          "sf": "code,name"
+        }
+      },
+      {
+        "path": "/loinc_items/v3/search",
+        "method": "GET",
+        "purpose": "Search LOINC lab codes.",
+        "example_params": {
+          "terms": "haemoglobin"
+        }
+      },
+      {
+        "path": "/rxterms/v3/search",
+        "method": "GET",
+        "purpose": "Search RxTerms (consumer-facing drug names with strength/form).",
+        "example_params": {
+          "terms": "ibuprofen"
+        }
+      }
+    ],
+    "gotchas": "Responses are a JSON array, not an object: [total, codes, extra, displayFields]. Don't expect a typical name/results envelope.",
+    "cluster": 4
+  },
+  {
+    "slug": "global-disease-ontology",
+    "name": "Disease Ontology (DO) API",
+    "provider": "Institute for Genome Sciences, University of Maryland",
+    "region": "Global",
+    "category": "ontology",
+    "base_url": "https://api.disease-ontology.org/v1",
+    "docs_url": "https://disease-ontology.org/do-kb/api_doc",
+    "licence": "CC0 1.0 (public domain dedication)",
+    "rate_limits": "none documented",
+    "auth": "none",
+    "verified_at": "2026-05-18",
+    "verification_evidence": {
+      "endpoint_tested": "https://disease-ontology.org/api/metadata/DOID:14330/",
+      "status": 200,
+      "content_type": "application/json",
+      "response_excerpt": "{\"definition\":\"A synucleinopathy that has_material_basis_in degeneration of the central nervous system that often impairs motor skills, speech, and other functions.\",\"id\":\"DOID:14330\",\"name\":\"Parkinson's disease\",\"parents\":[[\"is_a\",\"synucleinopathy\",\"DOID:0050890\",\"obo\"]]}"
+    },
+    "key_endpoints": [
+      {
+        "path": "/v1/terms/{DOID}",
+        "method": "GET",
+        "purpose": "Fetch a Disease Ontology term (e.g. DOID:14330) with definition, parents, synonyms, xrefs.",
+        "example_params": {}
+      },
+      {
+        "path": "/v1/terms/search",
+        "method": "GET",
+        "purpose": "Free-text search across disease names and synonyms.",
+        "example_params": {}
+      }
+    ],
+    "gotchas": "Endpoints permanent-redirect (308) to a trailing-slash URL — make sure your client follows redirects. Returns a session cookie which can be ignored.",
+    "cluster": 4
+  },
+  {
+    "slug": "global-ebi-ols4",
+    "name": "EBI Ontology Lookup Service (OLS4)",
+    "provider": "EMBL-EBI",
+    "region": "EU",
+    "category": "ontology",
+    "base_url": "https://www.ebi.ac.uk/ols4/api",
+    "docs_url": "https://www.ebi.ac.uk/ols4/help",
+    "licence": "OLS service is open; individual ontologies carry their own licences (mostly CC-BY, CC0, or Apache).",
+    "rate_limits": "none documented; service is HATEOAS-style with _embedded/_links",
+    "auth": "none",
+    "verified_at": "2026-05-18",
+    "verification_evidence": {
+      "endpoint_tested": "https://www.ebi.ac.uk/ols4/api/ontologies?size=2",
+      "status": 200,
+      "content_type": "application/json",
+      "response_excerpt": "{\"_embedded\":{\"ontologies\":[{\"ontologyId\":\"addicto\",\"loaded\":\"2026-05-18T00:08:44.404265188\",\"status\":\"LOADED\",\"numberOfTerms\":1363,\"config\":{\"preferredPrefix\":\"ADDICTO\",\"title\":\"Addiction Ontology\"}}]}}"
+    },
+    "key_endpoints": [
+      {
+        "path": "/ontologies",
+        "method": "GET",
+        "purpose": "Paginated list of all ontologies loaded into OLS (HPO, MONDO, EFO, GO, SNOMED subsets, etc.).",
+        "example_params": {
+          "size": 20
+        }
+      },
+      {
+        "path": "/ontologies/{id}",
+        "method": "GET",
+        "purpose": "Details for one ontology (e.g. hp, mondo, efo).",
+        "example_params": {}
+      },
+      {
+        "path": "/search",
+        "method": "GET",
+        "purpose": "Search terms across all ontologies; filter by ontology= and type=.",
+        "example_params": {
+          "q": "asthma",
+          "ontology": "hp"
+        }
+      }
+    ],
+    "gotchas": "Responses follow HAL/HATEOAS conventions (_embedded, _links). The hostname is www.ebi.ac.uk — not a separate api host.",
+    "cluster": 4
+  },
+  {
+    "slug": "global-europepmc",
+    "name": "Europe PMC REST API",
+    "provider": "Europe PMC consortium (EMBL-EBI, Wellcome Trust, JISC, etc.)",
+    "region": "EU",
+    "category": "clinical-evidence",
+    "base_url": "https://www.ebi.ac.uk/europepmc/webservices/rest",
+    "docs_url": "https://europepmc.org/RestfulWebService",
+    "licence": "Service is free; individual articles vary (open access / restricted). Search metadata is generally free to reuse.",
+    "rate_limits": "Documented fair-use; no hard published limit",
+    "auth": "none",
+    "verified_at": "2026-05-18",
+    "verification_evidence": {
+      "endpoint_tested": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=asthma&format=json&pageSize=1",
+      "status": 200,
+      "content_type": "application/json;charset=UTF-8",
+      "response_excerpt": "{\"version\":\"6.9\",\"hitCount\":678457,\"resultList\":{\"result\":[{\"id\":\"42103518\",\"source\":\"MED\",\"pmid\":\"42103518\",\"doi\":\"10.1016/j.landig.2026.100988\",\"title\":\"An online singing-based breathing and wellbeing programme (ENO Breathe) in people with long COVID breathlessness in the UK: a cohort study.\",\"journalTitle\":\"Lancet Digit Health\",\"pubYear\":\"2027\"}]}}"
+    },
+    "key_endpoints": [
+      {
+        "path": "/search",
+        "method": "GET",
+        "purpose": "Search biomedical literature across PubMed, PMC, preprints, patents.",
+        "example_params": {
+          "query": "asthma AND (long covid)",
+          "format": "json",
+          "pageSize": 10
+        }
+      },
+      {
+        "path": "/article/{source}/{id}/fullTextXML",
+        "method": "GET",
+        "purpose": "Fetch full-text XML for open-access articles.",
+        "example_params": {}
+      },
+      {
+        "path": "/{source}/{id}/references",
+        "method": "GET",
+        "purpose": "Retrieve references cited by an article.",
+        "example_params": {}
+      }
+    ],
+    "gotchas": "Pagination is cursor-based (cursorMark), not page numbers. Default format is XML; pass format=json.",
+    "cluster": 3
+  },
+  {
+    "slug": "us-cdc-socrata",
+    "name": "CDC Open Data (Socrata)",
+    "provider": "U.S. Centers for Disease Control and Prevention",
+    "region": "US",
+    "category": "public-health-data",
+    "base_url": "https://data.cdc.gov",
+    "docs_url": "https://dev.socrata.com/foundry/data.cdc.gov",
+    "licence": "U.S. public domain (federal government works). Per-dataset terms occasionally apply.",
+    "rate_limits": "Higher limits with an app token; anonymous calls are throttled — Socrata recommends a token for production but works fine without one for low volume.",
+    "auth": "none",
+    "verified_at": "2026-05-18",
+    "verification_evidence": {
+      "endpoint_tested": "https://data.cdc.gov/resource/pj7m-y5uh.json?$limit=1",
+      "status": 200,
+      "content_type": "application/json;charset=utf-8",
+      "response_excerpt": "[{\"data_as_of\":\"2023-09-27T00:00:00.000\",\"start_week\":\"2020-01-01T00:00:00.000\",\"end_week\":\"2023-09-23T00:00:00.000\",\"year\":\"2020-2023\",\"group\":\"By Total\",\"state\":\"United States\",\"indicator\":\"Count of COVID-19 deaths\",\"non_hispanic_white\":\"759307\",\"non_hispanic_black_african_american\":\"157193\",\"hispanic_latino_total\":\"172226\"}]"
+    },
+    "key_endpoints": [
+      {
+        "path": "/api/views/metadata/v1",
+        "method": "GET",
+        "purpose": "Browse the dataset catalogue (id, name, category, description) to find a dataset four-by-four ID.",
+        "example_params": {
+          "limit": 10
+        }
+      },
+      {
+        "path": "/resource/{fourByFour}.json",
+        "method": "GET",
+        "purpose": "Query a specific dataset using SoQL (SQL-like) parameters.",
+        "example_params": {
+          "$limit": 5,
+          "$where": "state='New York'"
+        }
+      }
+    ],
+    "gotchas": "Each dataset has a four-by-four ID like pj7m-y5uh. Old IDs (e.g. 9mfq-cb36 for early COVID daily counts) have been retired and now 404; check data.cdc.gov in a browser to confirm the dataset still exists before hardcoding an ID. Use $limit, $offset, $where, $select per SoQL spec.",
+    "cluster": 2
+  },
+  {
+    "slug": "fhir-hapi-public-r4",
+    "name": "HAPI FHIR Public Test Server (R4)",
+    "provider": "Smile Digital Health / HAPI FHIR project",
+    "region": "Global",
+    "category": "fhir-sandbox",
+    "base_url": "https://hapi.fhir.org/baseR4",
+    "docs_url": "https://hapifhir.io/hapi-fhir/docs/server_plain/test_server.html",
+    "licence": "Test server: data is synthetic / user-submitted. No real PHI. Apache-2.0 software; no formal data licence — treat as public test data.",
+    "rate_limits": "Best-effort public sandbox; not for production load. Operator may rate-limit abusers.",
+    "auth": "none",
+    "verified_at": "2026-05-18",
+    "verification_evidence": {
+      "endpoint_tested": "https://hapi.fhir.org/baseR4/Patient?_count=1",
+      "status": 200,
+      "content_type": "application/fhir+json;charset=utf-8",
+      "response_excerpt": "{\"resourceType\":\"Bundle\",\"id\":\"bea5a6f7-1ae9-4ca5-a0c8-8e2772a1c3a7\",\"meta\":{\"lastUpdated\":\"2026-05-18T17:05:45.410+00:00\"},\"type\":\"searchset\",\"entry\":[{\"fullUrl\":\"https://hapi.fhir.org/baseR4/Patient/90286136\",\"resource\":{\"resourceType\":\"Patient\",\"id\":\"90286136\"}}]}"
+    },
+    "key_endpoints": [
+      {
+        "path": "/metadata",
+        "method": "GET",
+        "purpose": "CapabilityStatement — what the server supports.",
+        "example_params": {}
+      },
+      {
+        "path": "/Patient",
+        "method": "GET",
+        "purpose": "Search Patient resources (FHIR R4 search params: name, identifier, birthdate, etc.).",
+        "example_params": {
+          "_count": 5
+        }
+      },
+      {
+        "path": "/Observation",
+        "method": "GET",
+        "purpose": "Search clinical observations (vitals, labs, etc.).",
+        "example_params": {
+          "code": "http://loinc.org|29463-7",
+          "_count": 5
+        }
+      }
+    ],
+    "gotchas": "Sandbox: data is public-test, schema may include odd user-submitted resources. State is shared — anyone can POST. Send Accept: application/fhir+json for JSON; default may be XML.",
+    "cluster": 4
+  }
+]

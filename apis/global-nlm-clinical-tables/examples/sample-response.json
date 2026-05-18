@@ -1,0 +1,43 @@
+[
+    19,
+    [
+        "J45.998",
+        "J82.83",
+        "J45.909",
+        "J45.991",
+        "J45.20",
+        "J45.30",
+        "J45.40"
+    ],
+    null,
+    [
+        [
+            "J45.998",
+            "Other asthma"
+        ],
+        [
+            "J82.83",
+            "Eosinophilic asthma"
+        ],
+        [
+            "J45.909",
+            "Unspecified asthma, uncomplicated"
+        ],
+        [
+            "J45.991",
+            "Cough variant asthma"
+        ],
+        [
+            "J45.20",
+            "Mild intermittent asthma, uncomplicated"
+        ],
+        [
+            "J45.30",
+            "Mild persistent asthma, uncomplicated"
+        ],
+        [
+            "J45.40",
+            "Moderate persistent asthma, uncomplicated"
+        ]
+    ]
+]

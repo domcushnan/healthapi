@@ -1,0 +1,43 @@
+{
+    "studies": [
+        {
+            "protocolSection": {
+                "identificationModule": {
+                    "nctId": "NCT01168635",
+                    "briefTitle": "Improving Asthma Outcomes Through Spirometry Distance Learning"
+                },
+                "statusModule": {
+                    "overallStatus": "COMPLETED"
+                },
+                "sponsorCollaboratorsModule": {
+                    "leadSponsor": {
+                        "name": "Seattle Children's Hospital"
+                    }
+                },
+                "designModule": {
+                    "phases": [
+                        "NA"
+                    ]
+                }
+            }
+        },
+        {
+            "protocolSection": {
+                "identificationModule": {
+                    "nctId": "NCT04658992",
+                    "briefTitle": "The Registration on the Use of Feilike Heji in Minors"
+                },
+                "statusModule": {
+                    "overallStatus": "UNKNOWN"
+                },
+                "sponsorCollaboratorsModule": {
+                    "leadSponsor": {
+                        "name": "China Academy of Chinese Medical Sciences"
+                    }
+                },
+                "designModule": {}
+            }
+        }
+    ],
+    "nextPageToken": "ZVJj7o2Elu8o3lp1XcP_4unumpOQJJxtYfWg0A"
+}

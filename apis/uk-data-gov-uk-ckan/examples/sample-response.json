@@ -1,0 +1,82 @@
+{
+  "help": "https://ckan.publishing.service.gov.uk/api/3/action/help_show?name=package_search",
+  "success": true,
+  "result": {
+    "count": 5585,
+    "facets": {},
+    "results": [
+      {
+        "id": "d44b4f65-563a-4e3c-9a01-f51b4a4dbdd2",
+        "name": "health",
+        "title": "Health Trust Reference Costs 2014-15",
+        "notes": "Reference Costs provide indicators of the unit costs of providing a range of hospital and community services at trust and hospital level, based on information derived from electronic hospital activity systems and HSC trust financial and information returns for 2014-15. ",
+        "license_id": "uk-ogl",
+        "license_title": "UK Open Government Licence (OGL)",
+        "license_url": "http://reference.data.gov.uk/id/open-government-licence",
+        "isopen": true,
+        "metadata_created": "2016-06-10T09:56:02.268810",
+        "metadata_modified": "2018-07-28T04:21:49.971857",
+        "num_resources": 24,
+        "num_tags": 0,
+        "state": "active",
+        "type": "dataset",
+        "organization": {
+          "id": "8549022f-fa16-43e4-a56f-6a45ca875199",
+          "name": "open-data-ni",
+          "title": "OpenDataNI",
+          "type": "organization"
+        },
+        "resources": [
+          {
+            "id": "09abc50b-e235-4386-9808-4b5d879a6917",
+            "name": "HRG Unit Costs by Provider - Day case costs",
+            "format": "CSV",
+            "url": "https://www.opendatani.gov.uk/dataset/d44b4f65-563a-4e3c-9a01-f51b4a4dbdd2/resource/09abc50b-e235-4386-9808-4b5d879a6917/download/by-provider-14-15-daycase-costs.csv",
+            "description": "Healthcare Resource Group unit costs for acute hospital procedures, broken down by hospital site. Costs of procedures carried out as day cases."
+          },
+          {
+            "id": "ceb1f458-598a-4566-96bf-c5fbfae81728",
+            "name": "HRG Unit Costs by Provider - Day case activity",
+            "format": "CSV",
+            "url": "https://www.opendatani.gov.uk/dataset/d44b4f65-563a-4e3c-9a01-f51b4a4dbdd2/resource/ceb1f458-598a-4566-96bf-c5fbfae81728/download/by-provider-14-15-daycase-fces.csv",
+            "description": "Healthcare Resource Group unit costs for acute hospital procedures, broken down by hospital site. Volume of procedures, measured by finished consultant episode, carried out as day cases."
+          }
+        ],
+        "_truncated": true
+      },
+      {
+        "id": "b533ca2c-b55f-490b-af0e-1c7bbc6129eb",
+        "name": "oral-health",
+        "title": "Oral Health",
+        "notes": "This public health factsheet describes facts, assets, and strategies related to oral health in Camden.",
+        "license_id": null,
+        "license_title": null,
+        "license_url": null,
+        "isopen": false,
+        "metadata_created": "2017-06-23T12:30:56.095480",
+        "metadata_modified": "2023-09-14T05:25:17.291761",
+        "num_resources": 1,
+        "num_tags": 4,
+        "state": "active",
+        "type": "dataset",
+        "organization": {
+          "id": "679a9f85-9a24-4ed3-ae5b-be180fff321d",
+          "name": "london-borough-of-camden",
+          "title": "London Borough of Camden",
+          "type": "organization"
+        },
+        "resources": [
+          {
+            "id": "5e0cf58e-fc43-495f-bf96-73118c35c682",
+            "name": "Download",
+            "format": "PDF",
+            "url": "https://opendata.camden.gov.uk/download/8bbh-zxgt/application/pdf",
+            "description": ""
+          }
+        ],
+        "_truncated": true
+      }
+    ],
+    "_truncated": true
+  }
+}

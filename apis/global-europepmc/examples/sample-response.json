@@ -1,0 +1,81 @@
+{
+  "version": "6.9",
+  "hitCount": 46483,
+  "nextCursorMark": "AoIIQIkFjCg1NDk4NzMzMQ==",
+  "nextPageUrl": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=asthma AND long covid&cursorMark=AoIIQIkFjCg1NDk4NzMzMQ==&resultType=lite&pageSize=3&format=json",
+  "request": {
+    "queryString": "asthma AND long covid",
+    "resultType": "lite",
+    "cursorMark": "*",
+    "pageSize": 3,
+    "sort": "",
+    "synonym": false
+  },
+  "resultList": {
+    "result": [
+      {
+        "id": "42103518",
+        "source": "MED",
+        "pmid": "42103518",
+        "doi": "10.1016/j.landig.2026.100988",
+        "title": "An online singing-based breathing and wellbeing programme (ENO Breathe) in people with long COVID breathlessness in the UK: a cohort study.",
+        "authorString": "Philip KEJ, Owles H, McVey S, Pagnuco T, Bruce K, Warnock B, Chomacki A, Brunjes H, Mollica J, Lound A, Zumpe S, Abrahams AM, Padmanaban V, Hardy TH, Lewis A, Lalvani A, Elkin SL, Hopkinson NS.",
+        "journalTitle": "Lancet Digit Health",
+        "pubYear": "2027",
+        "journalIssn": "2589-7500",
+        "pageInfo": "100988",
+        "pubType": "journal article",
+        "isOpenAccess": "N",
+        "inEPMC": "N",
+        "inPMC": "N",
+        "hasPDF": "N",
+        "hasBook": "N",
+        "hasSuppl": "N",
+        "citedByCount": 0,
+        "hasReferences": "N",
+        "hasTextMinedTerms": "Y",
+        "hasDbCrossReferences": "N",
+        "hasLabsLinks": "Y",
+        "hasTMAccessionNumbers": "N",
+        "firstIndexDate": "2026-05-13",
+        "firstPublicationDate": "2027-03-24"
+      },
+      {
+        "id": "41776429",
+        "source": "MED",
+        "pmid": "41776429",
+        "pmcid": "PMC13063568",
+        "fullTextIdList": {
+          "fullTextId": [
+            "PMC13063568"
+          ]
+        },
+        "doi": "10.1186/s12879-026-12977-5",
+        "title": "Association of pre-pandemic respiratory system diseases with long COVID: a population-based case-control study.",
+        "authorString": "Lindberg P, Lindblom S, Ljunggren G, Lee S, Kolosenko I, Runold M, Fedorowski A, Wachtler C, Piontkovskaya K, Wheelock \u00c5M, Carlsson AC.",
+        "journalTitle": "BMC Infect Dis",
+        "issue": "1",
+        "journalVolume": "26",
+        "pubYear": "2026",
+        "journalIssn": "1471-2334",
+        "pageInfo": "734",
+        "pubType": "research-article; journal article",
+        "isOpenAccess": "Y",
+        "inEPMC": "Y",
+        "inPMC": "Y",
+        "hasPDF": "Y",
+        "hasBook": "N",
+        "hasSuppl": "Y",
+        "citedByCount": 0,
+        "hasReferences": "Y",
+        "hasTextMinedTerms": "Y",
+        "hasDbCrossReferences": "N",
+        "hasLabsLinks": "Y",
+        "hasTMAccessionNumbers": "N",
+        "firstIndexDate": "2026-03-04",
+        "firstPublicationDate": "2026-03-03"
+      }
+    ],
+    "_truncated": true
+  }
+}

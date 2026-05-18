@@ -1,0 +1,111 @@
+{
+  "response": {
+    "docs": [
+      {
+        "iri": "http://purl.obolibrary.org/obo/HP_0002099",
+        "ontology_name": "hp",
+        "related_synonyms": [
+          "Reactive airway disease"
+        ],
+        "ontology_prefix": "HP",
+        "short_form": "HP_0002099",
+        "description": [
+          "Asthma is characterized by increased responsiveness of the tracheobronchial tree to multiple stimuli, leading to narrowing of the air passages with resultant dyspnea, cough, and wheezing."
+        ],
+        "label": "Asthma",
+        "obo_id": "HP:0002099",
+        "type": "class",
+        "exact_synonyms": [
+          "Bronchial asthma",
+          "Asthma"
+        ]
+      },
+      {
+        "iri": "http://purl.obolibrary.org/obo/HP_0012653",
+        "ontology_name": "hp",
+        "ontology_prefix": "HP",
+        "short_form": "HP_0012653",
+        "description": [
+          "Severe asthma unresponsive to repeated courses of beta-agonist therapy such as inhaled albuterol, levalbuterol, or subcutaneous epinephrine."
+        ],
+        "label": "Status asthmaticus",
+        "obo_id": "HP:0012653",
+        "type": "class",
+        "exact_synonyms": [
+          "Acute severe asthma"
+        ]
+      },
+      {
+        "iri": "http://purl.obolibrary.org/obo/HP_0012652",
+        "ontology_name": "hp",
+        "ontology_prefix": "HP",
+        "short_form": "HP_0012652",
+        "description": [
+          "Asthma attacks following exercise."
+        ],
+        "label": "Exercise-induced asthma",
+        "obo_id": "HP:0012652",
+        "type": "class",
+        "exact_synonyms": [
+          "Exercise-induced asthma"
+        ]
+      }
+    ],
+    "numFound": 15,
+    "start": 0,
+    "_truncated": true
+  },
+  "responseHeader": {
+    "QTime": 1091,
+    "status": 0
+  },
+  "facet_counts": {
+    "facet_fields": {
+      "ontologyPreferredPrefix": [
+        "HP",
+        "15",
+        "ADDICTO",
+        "0",
+        "ADO",
+        "0"
+      ],
+      "isDefiningOntology": [
+        "true",
+        "14",
+        "false",
+        "1"
+      ],
+      "ontologyId": [
+        "hp",
+        "15",
+        "addicto",
+        "0",
+        "ado",
+        "0"
+      ],
+      "ontologyIri": [
+        "http://purl.obolibrary.org/obo/hp/hp-international.owl",
+        "15",
+        "http://addictovocab.org/addicto.owl",
+        "0",
+        "http://biomodels.net/SBO/",
+        "0"
+      ],
+      "isObsolete": [
+        "false",
+        "15",
+        "true",
+        "0"
+      ],
+      "type": [
+        "class",
+        "15",
+        "entity",
+        "15",
+        "annotationProperty",
+        "0"
+      ],
+      "_truncated": true
+    }
+  }
+}

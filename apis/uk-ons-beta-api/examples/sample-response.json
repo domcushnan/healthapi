@@ -1,0 +1,51 @@
+{
+  "dimensions": {
+    "causeofdeath": {
+      "option": {
+        "href": "http://api.beta.ons.gov.uk/v1/code-lists/cause-of-death/codes/all-causes",
+        "id": "all-causes"
+      }
+    },
+    "geography": {
+      "option": {
+        "href": "http://api.beta.ons.gov.uk/v1/code-lists/administrative-geography/codes/E92000001",
+        "id": "E92000001"
+      }
+    },
+    "time": {
+      "option": {
+        "href": "http://api.beta.ons.gov.uk/v1/code-lists/calendar-years/codes/2025",
+        "id": "2025"
+      }
+    },
+    "week": {
+      "option": {
+        "href": "http://api.beta.ons.gov.uk/v1/code-lists/week-number/codes/week-52",
+        "id": "week-52"
+      }
+    }
+  },
+  "limit": 10000,
+  "links": {
+    "dataset_metadata": {
+      "href": "http://api.beta.ons.gov.uk/v1/datasets/weekly-deaths-region/editions/time-series/versions/116/metadata"
+    },
+    "self": {
+      "href": "http://api.beta.ons.gov.uk/v1/datasets/weekly-deaths-region/editions/time-series/versions/116/observations?causeofdeath=all-causes&geography=E92000001&time=2025&week=week-52"
+    },
+    "version": {
+      "href": "http://api.beta.ons.gov.uk/v1/datasets/weekly-deaths-region/editions/time-series/versions/116",
+      "id": "116"
+    }
+  },
+  "observations": [
+    {
+      "metadata": {
+        "Data Marking": ""
+      },
+      "observation": "6906"
+    }
+  ],
+  "offset": 0,
+  "total_observations": 1
+}

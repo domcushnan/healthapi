@@ -1,0 +1,134 @@
+{
+    "children": [
+        "DOID:0060894",
+        "DOID:0060892"
+    ],
+    "definition": "A synucleinopathy that has_material_basis_in degeneration of the central nervous system that often impairs motor skills, speech, and other functions.",
+    "id": "DOID:14330",
+    "imports": {
+        "anatomy": [
+            {
+                "id": "UBERON_0000061",
+                "label": "anatomical structure"
+            },
+            {
+                "id": "UBERON_0000465",
+                "label": "material anatomical entity"
+            },
+            {
+                "id": "UBERON_0000467",
+                "label": "anatomical system"
+            },
+            {
+                "id": "UBERON_0001016",
+                "label": "nervous system"
+            },
+            {
+                "id": "UBERON_0001017",
+                "label": "central nervous system"
+            },
+            {
+                "id": "UBERON_0001062",
+                "label": "anatomy"
+            },
+            {
+                "id": "UBERON_0004121",
+                "label": "ectoderm-derived structure"
+            },
+            {
+                "id": "UBERON_0010000",
+                "label": "multicellular anatomical structure"
+            },
+            {
+                "id": "UBERON_0011216",
+                "label": "organ system subdivision"
+            }
+        ],
+        "evidence": [
+            {
+                "id": "ECO_0000000",
+                "label": "evidence"
+            },
+            {
+                "id": "ECO_0007637",
+                "label": "curator inference from encyclopedia"
+            },
+            {
+                "id": "ECO_0007638",
+                "label": "curator inference from Wikipedia"
+            },
+            {
+                "id": "ECO_0007647",
+                "label": "curator inference from authoritative source"
+            }
+        ],
+        "omim_susceptibility": [
+            {
+                "id": "MIM_000000",
+                "label": "omim_susceptibility"
+            },
+            {
+                "id": "MIM_607688",
+                "label": "susceptibility to autosomal dominant parkinson disease 11"
+            },
+            {
+                "id": "MIM_610297",
+                "label": "susceptibility to autosomal dominant parkinson disease 13"
+            },
+            {
+                "id": "MIM_613643",
+                "label": "susceptibility to autosomal dominant parkinson disease 5"
+            },
+            {
+                "id": "MIM_614251",
+                "label": "susceptibility to autosomal dominant parkinson disease 18"
+            },
+            {
+                "id": "MIM_619491",
+                "label": "susceptibility to autosomal dominant Parkinson disease 24"
+            },
+            {
+                "id": "MIM_620923",
+                "label": "susceptibility to autosomal dominant Parkinson disease 26"
+            }
+        ]
+    },
+    "name": "Parkinson's disease",
+    "parents": [
+        "DOID:0050890"
+    ],
+    "sources": [
+        "http://en.wikipedia.org/wiki/Parkinson%27s_disease",
+        "https://pubmed.ncbi.nlm.nih.gov/26474316/",
+        "https://www.ncbi.nlm.nih.gov/articles/PMC5877503/"
+    ],
+    "subsets": [
+        "DO_FlyBase_slim",
+        "DO_rare_slim",
+        "NCIthesaurus"
+    ],
+    "synonyms": [
+        {
+            "pred": "EXACT",
+            "val": "paralysis agitans",
+            "xrefs": []
+        },
+        {
+            "pred": "EXACT",
+            "val": "Parkinson disease",
+            "xrefs": []
+        }
+    ],
+    "xrefs": [
+        "GARD:10251",
+        "ICD10CM:G20",
+        "ICD9CM:332",
+        "KEGG:05012",
+        "MESH:D010300",
+        "MIM:PS168600",
+        "NCI:C26845",
+        "ORDO:2828",
+        "SNOMEDCT_US_2025_09_01:49049000",
+        "UMLS_CUI:C0030567"
+    ]
+}
