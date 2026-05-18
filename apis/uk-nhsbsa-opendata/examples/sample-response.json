@@ -1,0 +1,57 @@
+{
+  "help": "https://opendata.nhsbsa.net/api/3/action/help_show?name=package_search",
+  "success": true,
+  "result": {
+    "count": 612,
+    "sort": "score desc, metadata_modified desc",
+    "facets": {},
+    "search_facets": {},
+    "results": [
+      {
+        "author": "NHSBSA Data Services support team",
+        "id": "3908d491-633e-46c3-89f3-465a9bbb769c",
+        "isopen": true,
+        "license_id": "OGL-UK-3.0",
+        "license_title": "Open Government Licence 3.0 (United Kingdom)",
+        "license_url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+        "metadata_created": "2023-11-20T15:32:03.784831",
+        "metadata_modified": "2026-05-07T09:12:17.787630",
+        "name": "prescriber-details",
+        "num_resources": 46,
+        "organization": {
+          "id": "ab9f74b0-a7ac-41a8-a97b-e49f8cd02aff",
+          "name": "community_prescribing_dispensing",
+          "title": "Community Prescribing & Dispensing",
+          "type": "organization",
+          "state": "active"
+        },
+        "state": "active",
+        "title": "Prescriber Details",
+        "type": "dataset",
+        "resources": [
+          {
+            "created": "2023-11-23T12:54:24.089833",
+            "datastore_active": false,
+            "format": "CSV",
+            "id": "bf11aae5-277d-47d3-9687-6c3cf5d74e78",
+            "last_modified": null,
+            "mimetype": "text/csv",
+            "name": "PRESCRIBER_DETAILS_202207",
+            "url": "https://opendata.nhsbsa.net/dataset/3908d491-633e-46c3-89f3-465a9bbb769c/resource/bf11aae5-277d-47d3-9687-6c3cf5d74e78/download/prescriber_details_202207.csv"
+          },
+          {
+            "created": "2023-11-23T12:55:01.539320",
+            "datastore_active": false,
+            "format": "CSV",
+            "id": "62a62e84-f385-4ee5-8d90-4c7757970a2e",
+            "last_modified": null,
+            "mimetype": "text/csv",
+            "name": "PRESCRIBER_DETAILS_202208",
+            "url": "https://opendata.nhsbsa.net/dataset/3908d491-633e-46c3-89f3-465a9bbb769c/resource/62a62e84-f385-4ee5-8d90-4c7757970a2e/download/prescriber_details_202208.csv"
+          }
+        ]
+      }
+    ],
+    "_truncated": true
+  }
+}

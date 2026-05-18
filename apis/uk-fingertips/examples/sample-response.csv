@@ -1,0 +1,11 @@
+Indicator ID,Indicator Name,Parent Code,Parent Name,Area Code,Area Name,Area Type,Sex,Age,Category Type,Category,Time period,Value,Lower CI 95.0 limit,Upper CI 95.0 limit,Lower CI 99.8 limit,Upper CI 99.8 limit,Count,Denominator,Value note,Recent Trend,Compared to England value or percentiles,Compared to percentiles,Time period Sortable,New data,Compared to goal,Time period range
+92313,Percentage of people in employment,,,E92000001,England,England,Male,16-64 yrs,,,2011/12,75.4,75.1,75.7,,,12742500,16893000,,,Not compared,Not compared,20110000,,,1y
+92313,Percentage of people in employment,,,E92000001,England,England,Female,16-64 yrs,,,2011/12,65,64.7,65.3,,,11128800,17133800,,,Not compared,Not compared,20110000,,,1y
+92313,Percentage of people in employment,,,E92000001,England,England,Persons,16-64 yrs,,,2011/12,70.2,70,70.4,,,23871300,34026800,,,Not compared,Not compared,20110000,,,1y
+92313,Percentage of people in employment,E92000001,England,E92000001,England,England,Male,16-64 yrs,,,2011/12,75.4,75.1,75.7,,,12742500,16893000,,,Similar,Not compared,20110000,,,1y
+92313,Percentage of people in employment,E92000001,England,E92000001,England,England,Female,16-64 yrs,,,2011/12,65,64.7,65.3,,,11128800,17133800,,,Similar,Not compared,20110000,,,1y
+92313,Percentage of people in employment,E92000001,England,E92000001,England,England,Persons,16-64 yrs,,,2011/12,70.2,70,70.4,,,23871300,34026800,,,Similar,Not compared,20110000,,,1y
+92313,Percentage of people in employment,,,E92000001,England,England,Male,16-64 yrs,,,2012/13,76.3,76,76.6,,,12883100,16886000,,,Not compared,Not compared,20120000,,,1y
+92313,Percentage of people in employment,,,E92000001,England,England,Female,16-64 yrs,,,2012/13,65.7,65.4,66,,,11251300,17123800,,,Not compared,Not compared,20120000,,,1y
+92313,Percentage of people in employment,,,E92000001,England,England,Persons,16-64 yrs,,,2012/13,71,70.8,71.2,,,24134400,34009800,,,Not compared,Not compared,20120000,,,1y
+92313,Percentage of people in empl

@@ -1,0 +1,43 @@
+{
+  "current_page": 1,
+  "data": [
+    {
+      "id": 1718,
+      "pid": "8fda5a7d-2206-415d-9199-f15a44dc4afc",
+      "team_id": 94,
+      "create_origin": "MANUAL",
+      "status": "DRAFT",
+      "created": "2026-05-18 14:42:52",
+      "updated": "2026-05-18 14:42:52",
+      "latest_metadata": {
+        "id": 1996,
+        "dataset_id": 1718,
+        "created_at": "2026-05-18T14:42:52.000000Z",
+        "metadata": {
+          "metadata": {
+            "metadata": {
+              "summary": {
+                "title": "Royal United Hospitals Bath National Pain Centre Complex Pain Outcomes",
+                "abstract": "This  dataset holds high-quality, large-scale detailed clinical information about some of the UK\u2019s most severely affected people living with chronic pain, across all ages.  \n\nThis UK-wide dataset covers 3 national specialist NHS services: \n\n1. The Complex Regional Pain Syndrome Service \n\n2. The Complex Cancer Late Effects Rehabilitation Service \n\n3. The Bath Centre for Pain Services\n\n Data deliver",
+                "publisher": {
+                  "name": "South West Secure Data Environment (SDE)",
+                  "gatewayId": 94
+                },
+                "keywords": "Pain;,;Rehabilitation;,;Cancer;,;CRPS;,;Complex regional pain syndrome",
+                "doiName": null
+              },
+              "_truncated": true
+            }
+          }
+        }
+      }
+    }
+  ],
+  "first_page_url": "https://api.healthdatagateway.org/api/v1/datasets?page=1",
+  "from": 1,
+  "last_page": 64,
+  "per_page": 25,
+  "to": 25,
+  "total": 1600,
+  "_truncated": true
+}

@@ -1,0 +1,268 @@
+[
+  {
+    "slug": "uk-fingertips",
+    "name": "OHID Fingertips Public Health Data API",
+    "provider": "Office for Health Improvement and Disparities (OHID, formerly PHE), Department of Health and Social Care",
+    "region": "UK-England",
+    "category": "uk-public-health",
+    "base_url": "https://fingertips.phe.org.uk/api",
+    "docs_url": "https://fingertips.phe.org.uk/api",
+    "licence": "Open Government Licence v3.0 (https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)",
+    "rate_limits": "none documented",
+    "auth": "none",
+    "verified_at": "2026-05-18",
+    "verification_evidence": {
+      "endpoint_tested": "https://fingertips.phe.org.uk/api/area_types",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "response_excerpt": "[{\"Id\":3,\"Name\":\"Middle Super Output Area\",\"Short\":\"MSOA\",\"Class\":null,\"Sequence\":0,\"CanBeDisplayedOnMap\":true},{\"Id\":6,\"Name\":\"Government Office Region (E12)\",\"Short\":\"Regions (statistical)\",\"Class\":null,\"Sequence\":0,\"CanBeDisplayedOnMap\":true},{\"Id\":7,\"Name\":\"General Practice\",\"Short\":\"GPs\",\"Class\":\"gp\",\"Sequence\":0,\"CanBeDisplayedOnMap\":true}]"
+    },
+    "key_endpoints": [
+      {
+        "path": "/area_types",
+        "method": "GET",
+        "purpose": "List all geographic area types Fingertips supports (England, regions, ICBs, local authorities, GP practices, MSOAs, wards).",
+        "example_params": {}
+      },
+      {
+        "path": "/profiles",
+        "method": "GET",
+        "purpose": "List all Public Health Profiles (e.g. Tobacco Control, Cardiovascular, Child and Maternal Health) with their group IDs and indicator counts per area type.",
+        "example_params": {}
+      },
+      {
+        "path": "/indicator_metadata/by_indicator_id",
+        "method": "GET",
+        "purpose": "Metadata (units, definitions, methodology, age/sex stratification) for one or more indicators.",
+        "example_params": {
+          "indicator_ids": "92313"
+        }
+      },
+      {
+        "path": "/all_data/csv/by_indicator_id",
+        "method": "GET",
+        "purpose": "Bulk CSV download of all values for an indicator across an area type. Returns CSV with value, CIs, count, denominator, time period, trend, comparator.",
+        "example_params": {
+          "indicator_ids": "92313",
+          "child_area_type_id": "15",
+          "parent_area_type_id": "15",
+          "parent_area_code": "E92000001"
+        }
+      },
+      {
+        "path": "/areas/by_area_type",
+        "method": "GET",
+        "purpose": "List all areas at a given area_type_id (e.g. all upper-tier local authorities, all ICBs, all GP practices).",
+        "example_params": {
+          "area_type_id": "15"
+        }
+      }
+    ],
+    "gotchas": "The JSON /indicator_data and /latest_data endpoints return HTTP 500 (with a browser-not-supported HTML body) for many parameter combinations — the API expects specific child/parent area_type_id pairings that are not consistently documented. The /all_data/csv/by_indicator_id endpoint is more reliable for bulk retrieval and returns text/csv. Area type 15 = England, 6 = Region (E12), 7 = GP, 66 = upper-tier local authority, 302 = ICB. Use /profiles to discover valid group_id + area_type_id combinations before requesting indicator data.",
+    "cluster": 5
+  },
+  {
+    "slug": "uk-nhsbsa-opendata",
+    "name": "NHS Business Services Authority Open Data Portal (CKAN)",
+    "provider": "NHS Business Services Authority (NHSBSA)",
+    "region": "UK-England",
+    "category": "uk-nhs",
+    "base_url": "https://opendata.nhsbsa.net/api/3",
+    "docs_url": "https://opendata.nhsbsa.net/",
+    "licence": "Open Government Licence v3.0 (https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/). Confirmed via license_id=OGL-UK-3.0 in dataset metadata.",
+    "rate_limits": "none documented",
+    "auth": "none",
+    "verified_at": "2026-05-18",
+    "verification_evidence": {
+      "endpoint_tested": "https://opendata.nhsbsa.net/api/3/action/package_search?q=prescribing&rows=2",
+      "status": 200,
+      "content_type": "application/json;charset=utf-8",
+      "response_excerpt": "{\"help\": \"https://opendata.nhsbsa.net/api/3/action/help_show?name=package_search\", \"success\": true, \"result\": {\"count\": 612, \"facets\": {}, \"results\": [{\"author\": \"NHSBSA Data Services support team\", \"license_id\": \"OGL-UK-3.0\", \"license_title\": \"Open Government Licence 3.0 (United Kingdom)\", \"name\": \"prescriber-details\", ...}]}}"
+    },
+    "key_endpoints": [
+      {
+        "path": "/action/package_search",
+        "method": "GET",
+        "purpose": "Full-text search the 600+ NHSBSA datasets (English Prescribing Data, BNF code information, pharmacy contract data, dispensing contractor payments).",
+        "example_params": {
+          "q": "prescribing",
+          "rows": 5
+        }
+      },
+      {
+        "path": "/action/package_show",
+        "method": "GET",
+        "purpose": "Fetch full metadata + monthly resource list for a dataset. Each English Prescribing Data (EPD) month is a separate resource (EPD_YYYYMM) with its own resource_id.",
+        "example_params": {
+          "id": "english-prescribing-data-epd"
+        }
+      },
+      {
+        "path": "/action/datastore_search",
+        "method": "GET",
+        "purpose": "Query a specific monthly resource as rows (SoQL-style filter by ICB_CODE, PRACTICE_CODE, BNF_CHAPTER, etc.). This is the actual prescribing record retrieval, not just metadata.",
+        "example_params": {
+          "resource_id": "EPD_202401",
+          "limit": 5
+        }
+      },
+      {
+        "path": "/action/package_list",
+        "method": "GET",
+        "purpose": "Bare list of all dataset slugs — useful for discovery without paging through package_search.",
+        "example_params": {}
+      }
+    ],
+    "gotchas": "English Prescribing Data (EPD) has one resource per month — resource_id pattern is EPD_YYYYMM (e.g. EPD_202401 for Jan 2024). Use package_show to discover the current month's resource_id before calling datastore_search. ICB_CODE and PRACTICE_CODE align with ODS codes (cross-reference with the Spine ODS API). Some older notes fields contain inline HTML.",
+    "cluster": 5
+  },
+  {
+    "slug": "uk-ukhsa-dashboard",
+    "name": "UKHSA Data Dashboard API",
+    "provider": "UK Health Security Agency",
+    "region": "UK-England",
+    "category": "uk-public-health",
+    "base_url": "https://api.ukhsa-dashboard.data.gov.uk",
+    "docs_url": "https://ukhsa-dashboard.data.gov.uk/access-our-data",
+    "licence": "Open Government Licence v3.0 (https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)",
+    "rate_limits": "none documented",
+    "auth": "none",
+    "verified_at": "2026-05-18",
+    "verification_evidence": {
+      "endpoint_tested": "https://api.ukhsa-dashboard.data.gov.uk/themes/infectious_disease/sub_themes/respiratory/topics/COVID-19/geography_types/Nation/geographies/England/metrics/COVID-19_cases_casesByDay",
+      "status": 200,
+      "content_type": "application/json",
+      "response_excerpt": "{\"count\":2296,\"next\":\"https://api.ukhsa-dashboard.data.gov.uk/...?page=2\",\"previous\":null,\"results\":[{\"theme\":\"infectious_disease\",\"sub_theme\":\"respiratory\",\"topic\":\"COVID-19\",\"geography_type\":\"Nation\",\"geography\":\"England\",\"geography_code\":\"E92000001\",\"metric\":\"COVID-19_cases_casesByDay\",\"metric_group\":\"cases\",\"stratum\":\"default\",\"sex\":\"all\",\"age\":\"all\",\"year\":2020,\"month\":1,\"epiweek\":5,\"date\":\"2020-01-30\",\"metric_value\":1.0,\"in_reporting_delay_period\":false}]}"
+    },
+    "key_endpoints": [
+      {
+        "path": "/themes",
+        "method": "GET",
+        "purpose": "Top-level navigation: lists themes (infectious_disease, immunisation, climate_and_environment). Drill down by following the link in each entry.",
+        "example_params": {}
+      },
+      {
+        "path": "/themes/{theme}/sub_themes/{sub_theme}/topics/{topic}/geography_types/{geog_type}/geographies/{geog}/metrics/{metric}",
+        "method": "GET",
+        "purpose": "Time-series data for a metric (e.g. COVID-19_cases_casesByDay) at a geography. Each row is one observation with date, metric_value, stratum, sex, age, in_reporting_delay_period flag.",
+        "example_params": {
+          "theme": "infectious_disease",
+          "sub_theme": "respiratory",
+          "topic": "COVID-19",
+          "geography_type": "Nation",
+          "geography": "England",
+          "metric": "COVID-19_cases_casesByDay"
+        }
+      },
+      {
+        "path": "/themes/{theme}/sub_themes/{sub_theme}/topics/{topic}",
+        "method": "GET",
+        "purpose": "Discover available geography_types and metrics for a topic without enumerating from /themes.",
+        "example_params": {}
+      }
+    ],
+    "gotchas": "This is the live replacement for the decommissioned api.coronavirus.data.gov.uk (DNS no longer resolves as of 2026-05-18). Path is deeply hierarchical (theme/sub_theme/topic/geography_type/geography/metric) — follow the links returned at each level rather than constructing paths by hand. Pagination is page=N querystring; respect 'next' URL.",
+    "cluster": 5
+  },
+  {
+    "slug": "uk-hdr-gateway",
+    "name": "HDR UK Health Data Gateway API",
+    "provider": "Health Data Research UK",
+    "region": "UK",
+    "category": "uk-public-health",
+    "base_url": "https://api.healthdatagateway.org/api/v1",
+    "docs_url": "https://www.healthdatagateway.org/page/api-documentation",
+    "licence": "Catalogue metadata available under permissive terms for discovery; underlying datasets are NOT in the API — Gateway only exposes metadata. Access to actual data requires a Data Access Request to the data custodian.",
+    "rate_limits": "none documented",
+    "auth": "none",
+    "verified_at": "2026-05-18",
+    "verification_evidence": {
+      "endpoint_tested": "https://api.healthdatagateway.org/api/v1/datasets?perPage=1",
+      "status": 200,
+      "content_type": "application/json",
+      "response_excerpt": "{\"current_page\":1,\"data\":[{\"id\":1718,\"pid\":\"8fda5a7d-2206-415d-9199-f15a44dc4afc\",\"team_id\":94,\"create_origin\":\"MANUAL\",\"status\":\"DRAFT\",\"latest_metadata\":{\"metadata\":{\"metadata\":{\"summary\":{\"title\":\"Royal United Hospitals Bath National Pain Centre Complex Pain Outcomes\",\"abstract\":\"This dataset holds high-quality, large-scale detailed clinical information about some of the UK's most severely affected people...\"}}}}}],\"total\":1600}"
+    },
+    "key_endpoints": [
+      {
+        "path": "/datasets",
+        "method": "GET",
+        "purpose": "List dataset catalogue entries (1600+ as of May 2026) with summary, abstract, custodian, keywords, structural metadata.",
+        "example_params": {
+          "perPage": 25
+        }
+      },
+      {
+        "path": "/datasets/{id}",
+        "method": "GET",
+        "purpose": "Full metadata for a single dataset including provenance, coverage, accessibility (DAR process), tissue/omics/linkage details.",
+        "example_params": {}
+      },
+      {
+        "path": "/teams",
+        "method": "GET",
+        "purpose": "List data custodian teams (NHS trusts, research organisations, biobanks) that publish datasets to the Gateway.",
+        "example_params": {}
+      },
+      {
+        "path": "/collections",
+        "method": "GET",
+        "purpose": "Curated thematic dataset collections (e.g. cardiovascular, respiratory).",
+        "example_params": {}
+      }
+    ],
+    "gotchas": "Host is api.healthdatagateway.org — the api.www.healthdatagateway.org variant does NOT resolve (DNS NXDOMAIN). The API exposes metadata only; data itself sits behind Data Access Request workflows handled outside the API. The 'metadata' field is deeply nested (latest_metadata.metadata.metadata.summary) — wrapper layers reflect a versioned schema. Status field includes DRAFT, ACTIVE — filter accordingly if you only want published datasets.",
+    "cluster": 5
+  },
+  {
+    "slug": "uk-ods-spine",
+    "name": "NHS Organisation Data Service (ODS) ORD API",
+    "provider": "NHS England (Spine services / formerly NHS Digital)",
+    "region": "UK",
+    "category": "uk-nhs",
+    "base_url": "https://directory.spineservices.nhs.uk/ORD/2-0-0",
+    "docs_url": "https://digital.nhs.uk/services/organisation-data-service",
+    "licence": "Open Government Licence v3.0 (https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)",
+    "rate_limits": "none documented",
+    "auth": "none",
+    "verified_at": "2026-05-18",
+    "verification_evidence": {
+      "endpoint_tested": "https://directory.spineservices.nhs.uk/ORD/2-0-0/organisations/RJ1",
+      "status": 200,
+      "content_type": "application/json",
+      "response_excerpt": "{\"Organisation\":{\"Name\":\"GUY'S AND ST THOMAS' NHS FOUNDATION TRUST\",\"Date\":[{\"Type\":\"Operational\",\"Start\":\"1993-04-01\"}],\"OrgId\":{\"root\":\"2.16.840.1.113883.2.1.3.2.4.18.48\",\"assigningAuthorityName\":\"HSCIC\",\"extension\":\"RJ1\"},\"Status\":\"Active\",\"LastChangeDate\":\"2023-11-14\",\"orgRecordClass\":\"RC1\",\"GeoLoc\":{\"Location\":{\"AddrLn1\":\"ST THOMAS' HOSPITAL\",\"AddrLn2\":\"WESTMINSTER BRIDGE ROAD\",\"Town\":\"LONDON\",\"PostCode\":\"SE1 7EH\",\"Country\":\"ENGLAND\"}}}}"
+    },
+    "key_endpoints": [
+      {
+        "path": "/organisations",
+        "method": "GET",
+        "purpose": "Search organisations by name, postcode, primary role, status. Returns a list with OrgId codes and links.",
+        "example_params": {
+          "PrimaryRoleId": "RO177",
+          "Limit": 25
+        }
+      },
+      {
+        "path": "/organisations/{OrgId}",
+        "method": "GET",
+        "purpose": "Full record for one organisation (e.g. RJ1 = Guy's and St Thomas') — name, address, roles, relationships (parent ICB, commissioner), operational dates.",
+        "example_params": {}
+      },
+      {
+        "path": "/roles",
+        "method": "GET",
+        "purpose": "Lookup table of all OrgRole codes (RO177 = Prescribing Cost Centre, RO197 = NHS Trust, RO198 = NHS Trust Site, RO261 = ICB, etc.).",
+        "example_params": {}
+      },
+      {
+        "path": "/sync",
+        "method": "GET",
+        "purpose": "Delta sync — returns links to organisations whose records changed since LastChangeDate. Use to maintain a local mirror.",
+        "example_params": {
+          "LastChangeDate": "2026-05-01"
+        }
+      }
+    ],
+    "gotchas": "OrgId codes are the canonical NHS reference for every Trust, GP practice, pharmacy, ICB, commissioner — cross-references NHSBSA prescribing data (ICB_CODE, PRACTICE_CODE), Fingertips (GP-level area codes), and most NHS datasets. PrimaryRoleId is the right filter for narrowing (e.g. RO261 = ICB, RO177 = GP practice). The /sync endpoint requires LastChangeDate or it 406s — that's a parameter error, not auth. PostCode field is empty for many legacy records.",
+    "cluster": 5
+  }
+]
